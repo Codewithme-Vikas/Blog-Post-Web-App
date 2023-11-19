@@ -1,0 +1,13 @@
+.post-read{
+    display: flex;
+    align-items: center;
+    gap : 1rem;
+    /* display: none; */
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+}
+
+
+.post:hover .post-read{
+    opacity: 1;
+}
