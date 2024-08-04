@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Editor from "../components/Editor";
 import { toast } from 'react-toastify'
 
+import { BACKEND_URL } from "../utils/constant";
 
 //create a action to send data to server api '/post'
 // i could not define a action because i don't know the how to use useState functionality inside the action
@@ -19,7 +20,7 @@ export default function CreatePostPage() {
             formData.set('content', content)
             // if thumbnail is not set then also formData contain a object named as file , where file name fill as ''
             // add a at least content length - task
-            const response = await fetch('http://localhost:8080/post', {
+            const response = await fetch( `${BACKEND_URL}/post`, {
                 method: 'POST',
                 body: formData,
                 credentials : 'include',

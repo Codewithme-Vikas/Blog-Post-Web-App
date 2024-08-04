@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { FaShare } from 'react-icons/fa'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { AiFillHeart } from 'react-icons/ai'
+import { BACKEND_URL } from "../utils/constant";
 
 export default function ShortPost({ id, title, summary, thumbnail, author, createdAt, updatedAt, upvote }) {
 
@@ -14,7 +15,7 @@ export default function ShortPost({ id, title, summary, thumbnail, author, creat
             <div className="post flex flex-col gap-4 p-3 sm:p-4 shadow-md shadow-slate-800 lg:shadow lg:shadow-slate-800 lg:hover:shadow-lg lg:hover:shadow-slate-700">
                 <div className="post-header flex items-center justify-between gap-2">
                     <Link to={`/author/${author._id}`} title={author.username}>
-                        <img className='rounded-[50%] aspect-square object-cover w-12 hover:scale-125 duration-200 ease-in' src={`http://localhost:8080/static/profile/${author.avatar}`} />
+                        <img className='rounded-[50%] aspect-square object-cover w-12 hover:scale-125 duration-200 ease-in' src={ `${BACKEND_URL}/static/profile/${author.avatar}`} />
                     </Link>
                     <div className='post-read'>
                         <span>
@@ -33,7 +34,7 @@ export default function ShortPost({ id, title, summary, thumbnail, author, creat
                         <p className='post-date text-sm'>{createdAt}</p>
                     </div>
                     <Link to={`/post/${id}`}>
-                        <img className='rounded-lg h-[250px] sm:h-[200px] w-full object-cover' src={`http://localhost:8080/static/post/${thumbnail}`} />
+                        <img className='rounded-lg h-[250px] sm:h-[200px] w-full object-cover' src={ `${BACKEND_URL}/static/post/${thumbnail}`} />
                     </Link>
                 </div>
                 <div className='post-footer flex items-center gap-4 justify-between'>

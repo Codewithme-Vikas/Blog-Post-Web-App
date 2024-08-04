@@ -2,11 +2,12 @@ import { useLoaderData } from "react-router-dom";
 
 import ShortPost from "../components/ShortPost";
 import UserCard from "../components/UserCard";
+import { BACKEND_URL } from "../utils/constant";
 
 export async function loader({ params }) {
 
     try {
-        const response = await fetch(`http://localhost:8080/user/${params.id}`);
+        const response = await fetch( `${BACKEND_URL}/user/${params.id}`);
 
         if (response.ok) {
             const userData = await response.json()

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import Editor from "./Editor"
 import { toast } from 'react-toastify'
-
+import { BACKEND_URL } from "../utils/constant";
 // define action to send the updated post data to the server
 // i could not create a action due to i don't know how to use hook inside the action
 
@@ -21,7 +21,7 @@ export default function EditPostPage({ post, setEditPost }) {
             formData.set('content', content)
             console.log( formData , Object.fromEntries( formData ))
             console.log( formData.get('thumbnail'))
-            const response = await fetch(`http://localhost:8080/post/${post._id}`, {
+            const response = await fetch( `${BACKEND_URL}/post/${post._id}`, {
                 method: 'POST',
                 body: formData,
                 credentials: 'include'

@@ -2,14 +2,14 @@ import { useContext, useEffect } from "react";
 import { NavLink , useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { toast } from 'react-toastify'
-
+import { BACKEND_URL } from "../utils/constant";
 export default function Header() {
     const navigate = useNavigate()
     const { userInfo, setUserInfo } = useContext(UserContext);
 
     async function fetchUserData() {
         try {
-            const response = await fetch('http://localhost:8080/profile', {
+            const response = await fetch( `${BACKEND_URL}/profile`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' }
@@ -37,7 +37,7 @@ export default function Header() {
     async function logoutHandler() {
 
         try {
-            const response = await fetch('http://localhost:8080/logout', {
+            const response = await fetch( `${BACKEND_URL}/logout`, {
                 method: 'POST',
                 credentials: 'include',
             })
@@ -70,7 +70,7 @@ export default function Header() {
                             <>
                                 {/* <NavLink to={''} className='p-1 font-medium text-lg italic'>{userInfo.username} </NavLink> */}
                                 <NavLink to={`/profile/${userInfo.id}`} title={userInfo.username}>
-                                    <img className='rounded-[50%] aspect-square object-cover w-[40px] hover:scale-110  duration-200 ease-in' src={`http://localhost:8080/static/profile/${userInfo.avatar}`} />
+                                    <img className='rounded-[50%] aspect-square object-cover w-[40px] hover:scale-110  duration-200 ease-in' src={ `${BACKEND_URL}/static/profile/${userInfo.avatar}`} />
                                 </NavLink>
                                 <NavLink to={'/post'} className='p-1'>Create post</NavLink>
                                 <a

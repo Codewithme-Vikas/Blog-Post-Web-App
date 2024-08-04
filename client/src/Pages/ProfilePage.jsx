@@ -4,11 +4,12 @@ import { TbEdit } from 'react-icons/tb'
 import UserCard from "../components/UserCard";
 import EditUserCard from "../components/EditUserCard";
 import ShortPost from "../components/ShortPost";
+import { BACKEND_URL } from "../utils/constant";
 
 export async function loader({ params }) {
 
     try {
-        const response = await fetch(`http://localhost:8080/user/profile/${params.id}`, {
+        const response = await fetch( `${BACKEND_URL}/user/progile/${params.id}`,{
             method: 'GET',
             credentials: 'include',
         });

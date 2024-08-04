@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from "../context/UserContext"
 import { toast } from 'react-toastify'
-
+import { BACKEND_URL } from "../utils/constant";
 
 export default function LoginPage() {
     const { setUserInfo } = useContext(UserContext)
@@ -15,7 +15,7 @@ export default function LoginPage() {
             const formData = new FormData(event.target)
             const data = Object.fromEntries(formData)
 
-            const response = await fetch('http://localhost:8080/login', {
+            const response = await fetch( `${BACKEND_URL}/login`,{
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: { 'Content-Type': 'application/json' },

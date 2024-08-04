@@ -4,13 +4,13 @@ import ReadPostPage from "../components/ReadPost"
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { UserContext } from '../context/UserContext'
 import { toast } from 'react-toastify'
-
+import { BACKEND_URL } from "../utils/constant";
 
 // loader to fetch the post on the base of id
 export async function loader({ params }) {
 
     try {
-        const response = await fetch(`http://localhost:8080/post/${params.id}`);
+        const response = await fetch( `${BACKEND_URL}/post/${params.id}`);
 
         if (response.ok) {
             const post = await response.json();
@@ -37,7 +37,7 @@ export default function PostPage() {
     async function deletePostHandler(id) {
 
         try {
-            const response = await fetch(`http://localhost:8080/post/${id}/delete`, {
+            const response = await fetch( `${BACKEND_URL}/post/${id}/delete`,{
                 method: 'POST',
                 credentials: 'include',
             });

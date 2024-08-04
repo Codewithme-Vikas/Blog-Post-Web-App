@@ -1,13 +1,13 @@
 import { useContext, useState } from "react"
 import { UserContext } from '../context/UserContext'
 import { useNavigate } from "react-router-dom";
-
+import { BACKEND_URL } from "../utils/constant";
 export default function EditUserCard({ user, setEditUser }) {
     const navigate = useNavigate()
     const { setUserInfo } = useContext(UserContext);
 
 
-    const [avatar, setAvatar] = useState(`http://localhost:8080/static/profile/${user.avatar}`) // this is only for UI, it will not be used for send to server because it will be raw data after onchange due to handle change
+    const [avatar, setAvatar] = useState( `${BACKEND_URL}/static/profile/${user.avatar}`) // this is only for UI, it will not be used for send to server because it will be raw data after onchange due to handle change
 
     const handleAvatarChange = (e) => {
         const file = e.target.files[0];
@@ -31,7 +31,7 @@ export default function EditUserCard({ user, setEditUser }) {
         try {
             const formData = new FormData(event.target) // it also container avatar[ not useState avatar]
 
-            const response = await fetch(`http://localhost:8080/user/profile/${user._id}`, {
+            const response = await fetch( `${BACKEND_URL}/user/profile/${user._id}`, {
                 method: 'POST',
                 body: formData,
                 credentials: 'include',

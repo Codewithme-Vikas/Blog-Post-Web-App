@@ -5,7 +5,7 @@ import { SlOptionsVertical } from 'react-icons/sl'
 import useUpvote from '../hook/useUpvote';
 import Comment from './Comment';
 import { toast } from 'react-toastify'
-
+import { BACKEND_URL } from "../utils/constant";
 
 
 export default function ReadPostPage({ post, userInfo, setEditPost, deletePostHandler }) {
@@ -22,7 +22,7 @@ export default function ReadPostPage({ post, userInfo, setEditPost, deletePostHa
     async function fetchComments(postId) {
 
         try {
-            const response = await fetch(`http://localhost:8080/comment/${postId}`)
+            const response = await fetch( `${BACKEND_URL}/comment/${postId}`)
 
             if (response.ok) {
                 const comments = await response.json()
@@ -45,7 +45,7 @@ export default function ReadPostPage({ post, userInfo, setEditPost, deletePostHa
 
         try {
             const commentData = { comment, authorId, postId };
-            const response = await fetch('http://localhost:8080/comment', {
+            const response = await fetch(`${BACKEND_URL}/comment`, {
                 method: 'POST',
                 body: JSON.stringify(commentData),
                 headers: { 'Content-Type': 'application/json' }
@@ -70,7 +70,7 @@ export default function ReadPostPage({ post, userInfo, setEditPost, deletePostHa
     async function deleteComment(id) {
 
         try {
-            const response = await fetch(`http://localhost:8080/comment/${id}`, {
+            const response = await fetch( `${BACKEND_URL}/comment/${id}`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' }
@@ -120,7 +120,7 @@ export default function ReadPostPage({ post, userInfo, setEditPost, deletePostHa
                 <div className="post p-4 hover:shadow-xl hover:shadow-slate-700 flex flex-col gap-4">
                     <div className="post-header flex items-center justify-between gap-2">
                         <Link to={`/author/${post.author._id}`}>
-                            <img className='rounded-[50%] aspect-square object-cover w-[60px] hover:scale-110 duration-200 ease-in' src={`http://localhost:8080/static/profile/${post.author.avatar}`} />
+                            <img className='rounded-[50%] aspect-square object-cover w-[60px] hover:scale-110 duration-200 ease-in' src={`${BACKEND_URL}/static/profile/${post.author.avatar}`} />
                         </Link>
                         <div className='post-read'>
                             <SlOptionsVertical className='text-white' />
@@ -138,7 +138,7 @@ export default function ReadPostPage({ post, userInfo, setEditPost, deletePostHa
                             <p className='post-date text-sm'>{post.createdAt}</p>
                         </div>
                         <p>
-                            <img className='rounded-lg max-h-[600px]  sm:max-h-[500px] md:max-h-[450px] lg:max-h-[400px] w-full object-contain' src={`http://localhost:8080/static/post/${post.thumbnail}`} />
+                            <img className='rounded-lg max-h-[600px]  sm:max-h-[500px] md:max-h-[450px] lg:max-h-[400px] w-full object-contain' src={`${BACKEND_URL}/static/post/${post.thumbnail}`} />
                         </p>
                         <p className='post-content' dangerouslySetInnerHTML={{ __html: post.content }} ></p>
                     </div>

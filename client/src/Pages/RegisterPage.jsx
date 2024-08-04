@@ -1,12 +1,12 @@
 import { Form, redirect, useActionData } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { BACKEND_URL } from "../utils/constant";
 
 export async function action( { request }){
     try {
         const formData = await request.formData();
         const data = Object.fromEntries( formData )
-        const repsonse = await fetch('http://localhost:8080/register',{
+        const repsonse = await fetch( `${BACKEND_URL}/register`,{
             method : 'POST',
             body : JSON.stringify( data ),
             headers : { 'Content-Type' : 'application/json'}

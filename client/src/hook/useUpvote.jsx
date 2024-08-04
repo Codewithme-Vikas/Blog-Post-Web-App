@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BACKEND_URL } from "../utils/constant";
 
 
 export default function useUpvote(id, userInfo) {
@@ -7,7 +8,7 @@ export default function useUpvote(id, userInfo) {
 
     async function upVoteHandler() {
 
-        const baseAPI = `http://localhost:8080/post/${id}/`;
+        const baseAPI = `${BACKEND_URL}/post/${id}/`;
         const realAPI  = upvote ? ( baseAPI + 'downvote' ) : ( baseAPI + 'upvote' );
 
         try {

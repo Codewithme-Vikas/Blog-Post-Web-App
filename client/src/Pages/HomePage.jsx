@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import ShortPost from "../components/ShortPost";
-
+import { BACKEND_URL } from "../utils/constant";
 export async function loader() {
 
     try {
-        const response = await fetch('http://localhost:8080/post');
+        const response = await fetch(`${BACKEND_URL}/post`);
 
         if (response.ok) {
             const posts = await response.json();
