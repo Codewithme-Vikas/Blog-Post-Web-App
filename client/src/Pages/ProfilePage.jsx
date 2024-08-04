@@ -12,6 +12,10 @@ export async function loader({ params }) {
         const response = await fetch( `${BACKEND_URL}/user/profile/${params.id}`,{
             method: 'GET',
             credentials: 'include',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Optional, if you are also using headers
+                'Content-Type': 'application/json',
+              },
         });
         
         if (response.ok) {
