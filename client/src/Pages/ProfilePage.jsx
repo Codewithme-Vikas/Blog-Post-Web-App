@@ -13,7 +13,6 @@ export async function loader({ params }) {
             method: 'GET',
             credentials: 'include',
             headers: {
-                'Authorization': `Bearer ${token}`, // Optional, if you are also using headers
                 'Content-Type': 'application/json',
               },
         });
