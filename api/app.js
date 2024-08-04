@@ -30,7 +30,7 @@ app.use(cookieParser())
 // routes
 app.use('/post', postRouter)
 app.use('/user', userRouter)
-app.use('/comment' , commentRouter)
+app.use('/comment', commentRouter)
 
 
 // application API
@@ -85,7 +85,7 @@ app.post('/login', async (req, res) => {
             }
         }
     } catch (error) {
-        console.log( error , 'login api')
+        console.log(error, 'login api')
         res.status(422).json('This is bad request!')
     }
 
@@ -94,7 +94,7 @@ app.post('/login', async (req, res) => {
 
 
 app.post('/logout', async (req, res) => {
-    res.cookie('token', '').json('cokkie is set as empty')
+    return res.cookie('token', '').json('cokkie is set as empty')
 })
 
 

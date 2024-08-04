@@ -16,7 +16,7 @@ export async function loader() {
         console.log( error , 'homepage loader')
         return null;
     }
-}``
+}
 
 export default function HomePage() {
     const posts = useLoaderData();
