@@ -3,7 +3,7 @@ import { Form, useLoaderData } from "react-router-dom";
 import { TbEdit } from 'react-icons/tb'
 import UserCard from "../components/UserCard";
 import EditUserCard from "../components/EditUserCard";
-import ShortPost from "../components/shortPost";
+import ShortPost from "../components/ShortPost";
 
 export async function loader({ params }) {
 
