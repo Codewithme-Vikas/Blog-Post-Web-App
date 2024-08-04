@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 
-import ShortPost from "../components/shortPost";
+import ShortPost from "../components/ShortPost";
 import UserCard from "../components/UserCard";
 
 export async function loader({ params }) {
