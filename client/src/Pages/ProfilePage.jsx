@@ -9,7 +9,7 @@ import { BACKEND_URL } from "../utils/constant";
 export async function loader({ params }) {
 
     try {
-        const response = await fetch( `${BACKEND_URL}/user/progile/${params.id}`,{
+        const response = await fetch( `${BACKEND_URL}/user/profile/${params.id}`,{
             method: 'GET',
             credentials: 'include',
         });
